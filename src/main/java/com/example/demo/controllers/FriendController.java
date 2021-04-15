@@ -15,7 +15,7 @@ public class FriendController {
     @Autowired
     private FriendRepository friendRepository;
 
-    @GetMapping(path = "/add")
+    @PostMapping(path = "/add")
     public String addFriend(@RequestParam String firstName, @RequestParam String lastName,
                             @RequestParam String mobile, @RequestParam String email){
         Friend friend = new Friend();
@@ -36,7 +36,7 @@ public class FriendController {
         return list;
     }
 
-    @GetMapping(path = "/remove/{id}")
+    @DeleteMapping(path = "/remove/{id}")
     public String  removeFriend(@PathVariable Long id){
         Friend friend = friendRepository.findById(id).get();
 
@@ -44,6 +44,8 @@ public class FriendController {
 
         return "Removed friend";
     }
+
+
 
 
 }
