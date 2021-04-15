@@ -3,10 +3,7 @@ package com.example.demo.controllers;
 import com.example.demo.models.Friend;
 import com.example.demo.repositories.FriendRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -40,7 +37,7 @@ public class FriendController {
     }
 
     @GetMapping(path = "/remove/{id}")
-    public String  removeFriend(@RequestParam Long id){
+    public String  removeFriend(@PathVariable Long id){
         Friend friend = friendRepository.findById(id).get();
 
         friendRepository.delete(friend);
