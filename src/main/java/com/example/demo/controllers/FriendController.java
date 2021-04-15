@@ -39,11 +39,12 @@ public class FriendController {
         return list;
     }
 
-    @GetMapping(path = "/remove")
-    public String  addFriend(){
-        List<Friend> list = (List<Friend>) friendRepository.findAll();
+    @GetMapping(path = "/remove/{id}")
+    public String  removeFriend(@RequestParam Long id){
+        Friend friend = friendRepository.findById(id).get();
 
-        
+        friendRepository.delete(friend);
+
         return "Removed friend";
     }
 
